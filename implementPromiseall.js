@@ -1,0 +1,1 @@
+// implement Promise.all
