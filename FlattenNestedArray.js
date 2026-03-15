@@ -9,7 +9,7 @@ console.log(flattenarr([[1,2,[3,4],[5,8]]]))
 
 
 
-// second approach flatten array
+// second approach flatten array  --recursion
 function flattenarry(arr){
  return   arr.reduce((acc,value)=>
 Array.isArray(value)?acc.concat(flattenarry(value)):acc.concat(value)

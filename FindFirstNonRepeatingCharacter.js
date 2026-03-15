@@ -11,5 +11,7 @@ function findfirstnonrepeatedchar(str){
     return null;
 }
 
+// Object counting pattern
 
+// Iteration logic
 console.log(findfirstnonrepeatedchar("aanhhjppg"))
