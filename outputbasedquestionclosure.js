@@ -76,3 +76,76 @@ for (let i = 0; i < 3; i++) {
     console.log(i);
   }, 100);
 }
+
+
+console.log([] == false);
+
+//  Type Coercion
+console.log("5" - 3);
+console.log("5" + 3);
+
+
+// Arrow Function this
+
+
+const obj = {
+  name: "Alex",
+  greet: () => {
+    console.log(this.name);
+  }
+};
+
+obj.greet();
+// Arrow functions do not have their own this.
+// Output
+// undefined
+
+
+// this Keyword
+const objj = {
+  name: "Alex",
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+objj.greet();
+
+// Output
+
+// Alex
+
+// this refers to the object calling the method.
+
+
+
+
+// Event Loop Question
+console.log("A");
+
+setTimeout(() => {
+  console.log("B");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("C");
+});
+
+console.log("D");
+
+// Output
+
+// A
+// D
+// C
+// B
+
+// Execution order
+
+// Synchronous → A
+
+// Synchronous → D
+
+// Microtask (Promise) → C
+
+// Macrotask (setTimeout) → B

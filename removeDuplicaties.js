@@ -27,3 +27,26 @@ console.log(removeDuplicaties(Input))
 // map.values()
 
 // values() returns all values from the map.
+
+// map.keys()
+
+// Returns all keys.
+
+// console.log([...map.keys()]);
+
+// Output:
+
+// [1,2,3]
+// map.entries()
+
+// Returns key-value pairs.
+
+// console.log([...map.entries()]);
+
+// Output:
+
+// [
+//  [1,"Apple"],
+//  [2,"Banana"],
+//  [3,"Mango"]
+// ]
