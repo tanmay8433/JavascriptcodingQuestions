@@ -149,3 +149,20 @@ console.log("D");
 // Microtask (Promise) → C
 
 // Macrotask (setTimeout) → B
+
+
+console.log(null == undefined)
+
+
+console.log(1 === '1');
+
+
+console.log('6' - 1);
+
+
+console.log(1 + '2');
+
+
+console.log('gfg'.repeat(3)); 
+
+console.log([1, 2, 3].reduce((a, b) => a + b));
