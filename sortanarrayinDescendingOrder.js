@@ -17,6 +17,7 @@ function sortArrayDesc(arr){
             }
         }
     }
+    // return arr.sort((a, b) => b - a);
     return arr;
 }
 

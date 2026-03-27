@@ -13,6 +13,9 @@ function removeFalsyv(arr){
 
 console.log(removeFalsyv(["",6,false,true,0,55]))
 
+// function removeFalsyValues(arr) { return arr.filter(Boolean); }
+
+
 
 // The falsy values in JavaScript are values which are false, 0, "" (empty string), null, undefined, and NaN.
 
