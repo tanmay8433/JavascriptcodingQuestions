@@ -1,0 +1,17 @@
+/* .accordion-item { border-bottom: 1px solid #ddd; } */
+  /* .accordion-header { 
+    padding: 15px; 
+    cursor: pointer; 
+    background: #f4f4f4; 
+    font-weight: bold; 
+  } */
+  /* Hidden by default */
+  .accordion-content { 
+    padding: 15px; 
+    display: none; 
+  }
+  /* Show content when 'active' class is present */
+  .accordion-item.active .accordion-content { 
+    display: block; 
+  }
+

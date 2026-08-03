@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ul li{
+    padding: 15px;
+    margin-top: 5px;
+    background-color: #f4f4f4;
+    list-style-type: none;
+}
+
+.delete-btn{
+    cursor: pointer;
+     float: right;
+  color: red;
+}
+
+
+</style>
+<body>
+    <div class="header">
+        <h1>
+            TO-do list
+        </h1>
+        <div>
+            <input type="text" id="inputid" placeholder="write items"/>
+            <button id="addbtn" onclick=elementadd()>add</button>
+        </div>
+        
+    </div>
+    <ul id="UL">
+
+    </ul>
+    <script>
+
+function elementadd(){
+    let input =document.getElementById("inputid").value;
+    if(input===""){
+        alert("please enter a value")
+        return
+    }
+
+    let li=document.createElement("li");
+    li.textContent=input;
+
+    let span=document.createElement("span");
+    span.className="delete-btn"
+    span.textContent="x";
+    span.style.color="red";
+    span.style.cursor="pointer";
+    span.onclick=function(){
+        span.parentElement.remove();
+    }
+
+    li.appendChild(span);
+    document.getElementById("UL").appendChild(li);
+
+    document.getElementById("inputid").value="";
+
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
