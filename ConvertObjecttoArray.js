@@ -9,6 +9,8 @@ const objnew={
 const newarr=Object.entries(objnew)
 console.log(newarr)
 
+// Object.entries() method transforms an object into an array of key-value pairs.
+
 // Create an array of key-value pair arrays from a given object
 
 // function objectToPairs(obj) {
@@ -16,6 +18,7 @@ console.log(newarr)
 
 //   for (let key in obj) {
 //     if (Object.prototype.hasOwnProperty.call(obj, key)) {
+// or  if (obj.hasOwnProperty(key)) {
 //       result.push([key, obj[key]]);
 //     }
 //   }

@@ -8,6 +8,15 @@ const sum=(a)=>(b)=>(c)=>a+b+c;
 console.log(sum(5)(2)(1))
 
 
+function curriedSum(a) {
+    return function(b) {
+        return function(c) {
+            return a + b + c;
+        }
+    }
+}
+console.log(curriedSum(1)(2)(3)); // Output: 6
+
 // Common Use Cases
 // Event Handling: Creating pre-configured event listeners for specific items in a list.
 // API Calls: Pre-filling standard parameters like a database connection or a base URL before adding specific endpoints or IDs.

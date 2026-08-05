@@ -10,7 +10,7 @@ function deepClone(obj){
 
 // Use it when you want to send data to a server, store in localStorage, or log structured data.
 
-Example
+// Example
 const user = {
   name: "Rahul",
   age: 25

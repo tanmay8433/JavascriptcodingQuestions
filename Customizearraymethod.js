@@ -5,7 +5,6 @@
 // It return a new array and does not manipulate the original array.
 // Callback should receive the array[item] and the array index values as parameters.
 
-
 // Custom Map:
 // Use the prototype property of array to iterate over the array Items.
 // Declare a new array.
