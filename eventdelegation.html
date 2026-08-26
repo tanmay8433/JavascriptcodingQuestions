@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event delegation</title>
+</head>
+<body>
+  <ul id="category">
+  <li id="laptop">laptop</li>
+   <li id="laptop">shoes</li>
+    <li id="cameras">cameras</li>
+  </ul>
+</body>
+  <script>
+      document.querySelector("#category").addEventListener('click',(e)=>{
+        console.log(e.target.id)
+        if(e.target.tagName=="LI"){
+
+          window.location.href="/"+e.target.id
+        }
+      })
+    </script>
+</html>
