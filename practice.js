@@ -116,3 +116,113 @@ function checkanagrams(str1,str2){
   return true;
 }
 console.log(checkanagrams("listen", "silent"))
+
+
+
+
+// Remove Duplicates from Array
+
+let arr=[0,1,2,3,0,1,2]
+console.log([...new Set(arr)])
+
+
+function removeDuplicates(arr){
+  let newarr=[]
+  for(let i=0;i<arr.length;i++){
+    if(!newarr.includes(arr[i])){
+     newarr.push(arr[i])
+    }
+  }
+  return newarr;
+}
+console.log(removeDuplicates(arr))
+
+
+
+
+// Find Maximum Number
+
+// let arr=[0,1,2,5,5,7];
+let arrnew=arr=>Math.max(...arr)
+console.log(arrnew(arr))
+
+
+ function Findmax(arr)
+ {
+   let max=arr[0]
+   for(let i=1;i<arr.length;i++){
+     if(arr[i]>max){
+       max=arr[i]
+     }
+   }
+   return max
+ }
+console.log(Findmax(arr))
+
+
+// Sum of Array
+
+// let arr=[0,1,2,3,6]
+let sum=0
+for(let i=0;i<arr.length;i++){
+  sum+=arr[i]
+}
+
+
+let summ=arr.reduce((value,acc)=>value+acc,0)
+console.log(summ)
+
+
+
+// Flatten Array
+
+
+// let arr=[0,1,2,[3,[5,6],4]]
+
+console.log(arr.flat(Infinity))
+
+let newar=arr=>arr.reduce((acc,value)=>Array.isArray(value)?acc.concat(newar(value)):acc.concat(value),[])
+
+console.log(newar(arr))
+
+function flattenarray(arr){
+  let newarr=[]
+  for(let i=0;i<arr.length;i++){
+    if(!Array.isArray(arr[i])){
+      newarr.push(arr[i])
+    }
+    else{
+        newarr = newarr.concat(flattenarray(arr[i]));
+    }
+  }
+  return newarr;
+}
+console.log(flattenarray(arr))
+
+
+// Chunk Array
+
+// let arr=[0,1,2,5,8,2]
+let size=2;
+
+function chunkarr(arr,size){
+  let newarr=[]
+
+  for(let i=0;i<arr.length;i+=size){
+    newarr.push(arr.slice(i,i+size))
+  }
+  return newarr;
+}
+console.log(chunkarr(arr,size))
+
+
+
+// Find Missing Number
+
+// let arr=[0,1,2,4]
+
+
+let expectedsum=(arr.length * (arr.length + 1))/2;
+let actualsum=arr.reduce((a,b)=>a+b,0)
+let misno=expectedsum - actualsum
+console.log(misno)
