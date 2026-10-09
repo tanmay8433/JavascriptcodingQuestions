@@ -226,3 +226,227 @@ let expectedsum=(arr.length * (arr.length + 1))/2;
 let actualsum=arr.reduce((a,b)=>a+b,0)
 let misno=expectedsum - actualsum
 console.log(misno)
+
+
+
+
+// Two Sum Problem
+
+function findTwosum(arr,target){
+  const map=new Map();
+  for(let i=0;i< arr.length;i++){
+    let complement=target-arr[i]
+    if(map.has(complement)){
+      return [map.get(complement),i]
+    }
+    else{
+      map.set(arr[i],i)
+    }
+  }
+}
+console.log(findTwosum([2,7,19,5],9))
+
+function findTwosum(arr,target){
+  for(let i=0;i<arr.length;i++){
+    for(let j=i+1;j<arr.length;j++){
+      if(arr[i]+arr[j]==target){
+        return [i,j]
+      }
+    }
+  }
+  return []
+}
+console.log(findTwosum([2,7,19,5],9))
+
+
+// Move Zeros to End
+let arr=[0,1,25,0,12]
+
+const movezero=arr=>{
+  const nonzero=arr.filter(value=>value !==0);
+  const zerovalue=arr.filter(value=>value ==0);
+  return [...nonzero,...zerovalue]
+  
+}
+
+console.log(movezero(arr))
+
+
+
+// let arr=[0,1,25,0,12]
+
+const movezeroo=arr=>{
+let position=0;
+  for(let i=0;i<arr.length;i++){
+    if(arr[i]!==0){
+      arr[position]=arr[i]
+      position++
+    }
+  }
+  while(position<arr.length){
+        arr[position]=0;
+      position++
+  }
+  return arr
+}
+
+console.log(movezeroo(arr))
+
+
+// Find Intersection
+
+let arr1=[1,2,3]
+let arr2=[0,1,2,4]
+
+const findintersection = (arr1,arr2)=>{
+  return [... new Set(arr1)].filter((value)=>arr2.includes(value))
+}
+
+console.log(findintersection(arr1,arr2))
+
+
+
+
+const findintersectionn = (arr1,arr2)=>{
+let result=[]
+  for(let i=0;i<arr1.length;i++){
+    for(let j=0;j<arr2.length;j++){
+      if(arr1[i]===arr2[j] && !result.includes(arr1[i])){
+        result.push(arr1[i])
+      }
+    }
+  }
+  return result;
+}
+
+console.log(findintersectionn(arr1,arr2))
+
+
+
+// Fibonacci Sequence
+
+const findfibonacci=n=>{
+  if(n<=1) return n;
+  let a=0;let b=1;
+  for(let i=2;i<=n;i++){
+    [a,b]=[b,a+b]
+  }
+  return b;
+}
+console.log(findfibonacci(7))
+
+
+const findfibonaccii=n=>{
+  if(n<=1) return n;
+return findfibonacci(n-1) + findfibonacci(n-2)
+}
+console.log(findfibonaccii(7))
+
+
+
+
+ // Check Prime Number
+let number=17;
+function findprimeno(no){
+  if(no<=1) return false;
+  for(let i=2;i<=Math.sqrt(no);i++){
+    if(no % i === 0){
+      return false;
+    }
+  }
+  return true;
+}
+console.log(findprimeno(number))
+
+
+
+
+
+ // Check Prime Number
+// let number=17;
+function findprimeno(no){
+  if(no<=1) return false;
+  // for(let i=2;i<=Math.sqrt(no);i++){
+     for(let i=2;i<no;i++){
+    if(no % i === 0){
+      return false;
+    }
+  }
+  return true;
+}
+console.log(findprimeno(number))
+
+
+// Factorial
+
+function findFactorial(no){
+  // return no<=1 ? 1:no * findFactorial(no-1);
+let result=1;
+  for(let i=2;i<=no;i++){
+    result *=i;
+  }
+  return result;
+}
+
+
+console.log(findFactorial(5))
+
+
+
+Reverse Number
+function reverseno(no){
+ let reverse=parseFloat(String(Math.abs(no)).split("").reverse().join(""))
+  return no < 0 ? -reverse : reverse;
+}
+
+console.log(reverseno(741111))
+
+
+
+
+// Count Digits
+
+
+function countDigits(no){
+  return no.toString().split("").length
+  // return String(Math.abs(no)).length;
+}
+console.log(countDigits(12544))
+
+
+
+
+// Deep Clone Object
+
+
+function deepClone(obj){
+  // return JSON.parse(JSON.stringify(obj))
+  return structuredClone(obj)
+}
+console.log(deepClone({a: 1, b: {c: 2}}))
+// • structuredClone() is a built-in browser and Node.js feature.
+// • It looks at the object, dives deep into all nested layers (like your inner object {c: 2}), and creates a completely brand-new copy in memory.
+// • If you modify the clone, the original object remains perfectly safe and untouched.
+// 1. JSON.stringify(obj) → Turns the entire object structure into a simple string of text.
+// 2. JSON.parse(...) → Reads that text string and builds a fresh new object from scratch
+
+
+
+// marge objects
+
+
+function margeObj(obj1,obj2){
+  // return {...obj1,...obj2}
+// return Object.assign({}, obj1, obj2);
+  let result={...obj1}
+  for( let key in obj2){
+    if(typeof(obj2[key])==='object' && !Array.isArray(obj2[key])){
+      result[key]=margeObj(result[key] || {},obj2[key])
+    }
+    else{
+      result[key]=obj2[key]
+    }
+  }
+  return result;
+}
+console.log(margeObj({a: 1}, {b: 2}))
