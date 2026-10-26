@@ -450,3 +450,209 @@ function margeObj(obj1,obj2){
   return result;
 }
 console.log(margeObj({a: 1}, {b: 2}))
+
+
+
+
+// getter or setter example
+class P{
+  constructor(name,age){
+    this._name=name;
+    this._age=age;
+  }
+  get name(){
+    return this._name
+  }
+  set age(age){
+    this._age=age
+  }
+}
+
+const callClass=new P("tanmay","28")
+
+console.log(callClass.name)
+callClass.age="29"
+console.log(callClass._age)
+
+
+
+// static method
+class Calculator {
+  // Regular method (Instance method)
+  double(number) {
+    return number * 2;
+  }
+
+  // Static method
+  static add(a, b) {
+    return a + b;
+  }
+}
+
+// ❌ 1. Regular methods REQUIRE you to create an instance first
+const myCalc = new Calculator();
+console.log(myCalc.double(5)); // Output: 10
+
+// ❌ 2. You CANNOT call a static method on an instance
+// console.log(myCalc.add(5, 5)); // TypeError: myCalc.add is not a function
+
+//  3. You call static methods DIRECTLY on the Class name
+console.log(Calculator.add(5, 5)); // Output: 10
+
+// below is the example of methor overiding
+class Animal {
+    speak() {
+        console.log("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    speak() {
+        console.log("Cat meows");
+    }
+}
+
+const dog = new Dog();
+dog.speak(); 
+
+const cat = new Cat();
+cat.speak();
+
+
+// example of method overloading 
+class P{
+  add(a,b){
+    if(b===undefined){
+      return a+a;
+    }
+    else{
+     return  a+b
+    }
+  }
+}
+const callp=new P()
+console.log(callp.add(2))
+console.log(callp.add(2,5))
+
+
+// group by property
+
+const groupBy=(arr,key)=>arr.reduce((acc,obj)=>{
+  const group=obj[key];
+  acc[group]=acc[group] || [];
+  acc[group].push(obj)
+  return acc
+},{});
+
+console.log(groupBy([{type: 'fruit', name: 'apple'}, {type: 'fruit', name: 'banana'}],'type'))
+
+
+// 
+function groupBy(arr,key){
+  const result={}
+
+  for(let obj of arr){
+    let groupValue=obj[key];
+    if(!result[groupValue]){
+      result[groupValue]=[]
+    }
+    else{
+       result[groupValue].push(obj)
+    }
+  }
+  return result
+}
+
+console.log(groupBy([{type: 'fruit', name: 'apple'}, {type: 'fruit', name: 'banana'}],'type'))
+
+
+// delay fun
+const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+await delay(10000)
+console.log("f")
+
+
+function delay(ms) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms);
+  });
+}
+
+
+// retry function 
+async function retry(fn,retries=3){
+
+  for(let i=0;i<retries;i++)
+  try{
+    return await fn()
+  }catch(err){
+    if(i===retries-1) throw err;
+  }
+}
+// simple logic and syntax for retry logic
+async function retry(fn, retries = 3) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      // If we used up all our attempts, throw the final error
+      if (attempt === retries) {
+        throw error;
+      }
+    }
+  }
+}
+
+
+//// compare object
+const equal=(obj1,obj2)=>{
+  return JSON.stringify(obj1)===JSON.stringify(obj2)
+}
+console.log(equal({a:50},{a:50}))
+
+
+
+const deepEqual = (obj1, obj2) => {
+  // If both are the exact same reference or primitive value
+  if (obj1 === obj2) return true;
+
+  // Handle null or if either is not an object
+  if (obj1 == null || obj2 == null || typeof obj1 !== 'object' || typeof obj2 !== 'object') {
+    return false;
+  }
+
+  // Get the keys of both objects
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  // If they don't have the same number of properties, they aren't equal
+  if (keys1.length !== keys2.length) return false;
+
+  // Recursively check every key and value
+  for (let key of keys1) {
+    if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+// Test with different key order:
+console.log(deepEqual({a: 50, b: 20}, {b: 20, a: 50})); // Outputs: true ✅
+
+
+// Get nested properties 
+
+
+const getnestedProperties=(obj,properties)=>properties.split(".").reduce((acc,key)=>
+  acc?.[key],obj
+)
+
+console.log(getnestedProperties({a: {b: {c: 42}}}, 'a.b.c'))
