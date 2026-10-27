@@ -181,3 +181,132 @@ function CovertAcronym(str){
 }
 
 console.log(CovertAcronym(str))
+
+
+// find the longest common prefix
+// Problem: Given an array of strings, return the longest prefix shared by all of them (e.g. ["flower","flow","flight"] → "fl").
+// 1. Vertical scanning
+function findlongestcommonprefix(arr){
+  if(!arr.length) return "";
+for(let i=0; i < arr[0].length; i++){
+  let ch= arr[0][i]
+  for(let j=1; j < arr.length; j++){
+    if(i === arr[j].length || arr[j][i] != ch){
+      return arr[0].slice(0,i)
+    }
+  }
+}
+return arr[0]
+}
+
+console.log(findlongestcommonprefix(["flower","flow","flight"]))
+
+
+
+
+  // conver a string to title 
+const str="i learn jaVAscripT"
+
+function covertTitlecase(str){
+  return str.toLowerCase().split(" ").map((word)=>word.charAt(0).toUpperCase()+word.slice(1)).join(" ")
+}
+console.log(covertTitlecase(str))
+
+
+// check if a string in a valid shuffle of two string
+// Two pointers (works only when characters are distinct) Walk through result one character at a time. Each character must come from the next unused character of str1 or the next unused character of str2. If it matches neither, it’s not a valid shuffle.
+let s1 = "abc"
+let s2 = "def"
+let result = "adbecf" 
+function checkShuffle(str1,str2,result){
+  if(str1.length + str2.length !== result.length) return   false;
+    let i=0 , j=0;
+  for (let k=0; k < result.length;k++){
+    if(i < str1.length && result[k] === str1[i]){
+      i++;
+    }
+    else if (j < str2.length && result[k] === str2[j]){
+      j++;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(checkShuffle(s1,s2,result))
+
+
+// remove the all white spaces from a string
+
+let str=" tanmay agarwal"
+function removewhitespace(str){
+  // return str.split(" ").join(" ")
+  let result=""
+  for(let i=0;i < str.length; i++){
+    if(str[i] !== ' '){
+      result+=str[i]
+    }
+  }
+  return result;
+}
+console.log(removewhitespace(str))
+
+
+
+// check if a string is a rotation of another string
+// Concatenation trick (best answer)
+function checkrotation(str1,str2){
+  if(str1.length !== str2.length) return false;
+
+return (str1 + str1).includes(str2)
+
+  
+}
+
+console.log(checkrotation("waterbottle", "erbottlewat")) // true 
+// "waterbottle" + "waterbottle" = "waterbottlewaterbottle"
+// Look inside it: "wat erbottlewat erbottle". That’s s2.
+
+
+
+// find the most frequent character into the string
+// Frequency map with an object (most common answer)
+
+function findFrequent(str){
+let obj={}
+  let count=0;
+  let charr=""
+
+  for(let char of str){
+    obj[char]=(obj[char]||0) +1
+if(obj[char] > count){
+  count=obj[char]
+  charr=char
+}
+  }
+  return charr
+  
+} 
+
+console.log(findFrequent("hello world"))
+
+
+// find the all substring into a given string
+
+let str="tanmay"
+
+function findallSubstring(str){
+  let result=[]
+
+
+  for(let i=0; i < str.length;i++){
+    for(let j=i+1;j <=str.length ; j++){
+      result.push(str.slice(i,j))
+    }
+  }
+  return result
+}
+
+console.log(findallSubstring(str))
