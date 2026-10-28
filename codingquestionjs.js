@@ -310,3 +310,76 @@ function findallSubstring(str){
 }
 
 console.log(findallSubstring(str))
+
+
+
+
+// Problem: Given a full name in lowercase, reverse the order of the words and make the third letter of each word capital. You can use anything except replace().
+
+// Input: "abinash mohanta angular"  Output: "anGular moHanta abInash"
+
+// Solution 1: Using split, reverse, map
+
+function transform(str) {
+  return str
+    .split(" ")
+    .reverse()
+    .map(word => {
+      if (word.length < 3) return word; // no third letter
+      return word.slice(0, 2) + word[2].toUpperCase() + word.slice(3);
+    })
+    .join(" ");
+}
+
+console.log(transform("abinash mohanta angular"));
+
+// Solution 2: Without split/reverse/join (manual loops)
+function transformManual(str) {
+  let words = [];
+  let current = "";
+
+  // Manual split
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === " ") {
+      words.push(current);
+      current = "";
+    } else {
+      current += str[i];
+    }
+  }
+  words.push(current);
+
+  // Traverse words in reverse and build the result
+  let result = "";
+  for (let i = words.length - 1; i >= 0; i--) {
+    const word = words[i];
+    let newWord = "";
+
+    for (let j = 0; j < word.length; j++) {
+      newWord += j === 2 ? word[j].toUpperCase() : word[j];
+    }
+
+    result += newWord;
+    if (i !== 0) result += " ";
+  }
+
+  return result;
+}
+
+console.log(transformManual("abinash mohanta angular"));
+// "anGular moHanta abInash"
+
+
+
+Problem: Given an array, insert 7 after 3 and remove 5. You can use any array method.
+
+Input: [1, 2, 3, 4, 5, 6]
+
+Output: [1, 2, 3, 7, 4, 6]
+
+// fiter and splice
+function modifyFilter(arr) {
+  const result = arr.filter(n => n !== 5);   // remove 5
+  result.splice(result.indexOf(3) + 1, 0, 7); // insert 7 after 3
+  return result;
+}
