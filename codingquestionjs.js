@@ -383,3 +383,168 @@ function modifyFilter(arr) {
   result.splice(result.indexOf(3) + 1, 0, 7); // insert 7 after 3
   return result;
 }
+
+
+
+
+//  𝗙𝗹𝗮𝘁𝘁𝗲𝗻 𝗮 𝗻𝗲𝘀𝘁𝗲𝗱 𝗼𝗯𝗷𝗲𝗰𝘁 — turn {a: {b: {c: 1}, d: 2}, e: 3} into {"a.b.c": 1, "a.d": 2, "e": 3}.
+function flatten(obj, prefix = "", result = {}) {
+  for (const key of Object.keys(obj)) {
+    const path = prefix ? `${prefix}.${key}` : key;
+    const val = obj[key];
+
+    if (val !== null && typeof val === "object" && !Array.isArray(val)) {
+      flatten(val, path, result);
+    } else {
+      result[path] = val;
+    }
+  }
+  return result;
+}
+
+console.log(flatten({ a: { b: { c: 1 }, d: 2 }, e: 3 }));
+// { 'a.b.c': 1, 'a.d': 2, e: 3 }
+
+
+ // wrtie a fun that accepts a string and return the frequency of each unique character.Treat capital and small letters as the same (h and H count together)
+// input : HelloAbinash  
+// output: {h:2,e:1,l:2,o:1,a:2,b:1,i:1,n:1,s:1}
+
+
+function findFrequency(str){
+  let obj={}
+  for(let char of str.toLowerCase()){
+    
+    obj[char]=(obj[char] || 0 ) + 1
+  }
+  return obj;
+}
+
+console.log(findFrequency("HelloAbinash"))
+
+
+
+
+// find the longest word in string 
+
+let str="I Love Javascript"
+
+
+function findlongestWord(str){
+  // let newstr=str.split(" ")
+  // let longest=newstr[0]
+  // for(let i=1;i<newstr.length;i++){
+  //   if(newstr[i].length > longest.length){
+  //     longest=newstr[i]
+  //   }
+  // }
+  // return longest;
+
+  // let longest = "";
+  // let current = "";
+
+  // for (let i = 0; i < str.length; i++) {
+  //   if (str[i] !== " ") {
+  //     current += str[i];
+  //   } else {
+  //     if (current.length > longest.length) longest = current;
+  //     current = "";
+  //   }
+  // }
+
+  // if (current.length > longest.length) longest = current;
+  // return longest;
+  return str.trim().split(" ").reduce((a,b)=>b.length>a.length?b:a)
+}
+console.log(findlongestWord(str))
+
+
+// Reverse the word into the sentence
+
+let str="I Love Javascript"
+console.log(str.split(" ").reverse().join(" "))
+let newstr=str.split(" ")
+let update=[]
+for(let i=newstr.length-1; i >= 0; i--){
+   update.push(newstr[i])
+}
+console.log(update.join(" "))
+let result="";
+
+for(let i=newstr.length-1;i >= 0; i--){
+  result+=newstr[i]
+  if(i>0) result+=" " 
+}
+console.log(result)
+
+// remove duplicates character from a string 
+
+let str="programming"
+
+function removeDuplicates(str){
+  let result=[]
+  for(let i=0 ;i < str.length;i++){
+    if(!result.includes(str[i])){
+      result.push(str[i])
+    }
+  }
+  return result.join("")
+}
+// using set has , add 
+console.log([...new Set(str)].join(""))
+console.log(removeDuplicates(str))
+
+// capitize first letter
+let str="javascript"
+
+ console.log(str.charAt(0).toUpperCase()+str.slice(1,str.length))
+
+function CaptilizeFirstLetter(str){
+  let newstr=""
+    for(let i=0;i<str.length;i++){
+      if(i===0){
+       newstr += str[i].toUpperCase()
+      }
+      else{
+        newstr +=str[i]
+      }
+    }
+  return newstr;
+}
+console.log(CaptilizeFirstLetter("javascript"))
+
+const capitalizeWords = (str) =>
+  str
+    .split(" ")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+console.log(capitalizeWords("i love javascript")); // "I Love Javascript"
+
+// find the maximum difference between two ele
+let input=[7,1,5,3,6,4]
+console.log(Math.max(...input)-Math.min(...input)) // any two ele
+
+// find maximum differece between in two ele
+function maxDifferece(input){
+  let min=input[0]
+  let max=input[0]
+  for(let i=0;i<input.length-1;i++){
+    if(input[i]<min) min=input[i]
+     if(input[i]>max) max=input[i]
+  }
+  return max-min
+}
+console.log(maxDifferece(input))
+
+// find maximum differece largest ele after the small 
+function maxDifference(arr) {
+  let maxDiff = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      maxDiff = Math.max(maxDiff, arr[j] - arr[i]);
+    }
+  }
+  return maxDiff;
+}
+console.log(maxDifference(input))
