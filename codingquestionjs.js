@@ -548,3 +548,6 @@ function maxDifference(arr) {
   return maxDiff;
 }
 console.log(maxDifference(input))
+
+
+
